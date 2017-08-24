@@ -126,8 +126,12 @@ section.topbar{
 }
 .songlists .songs li a .songs-img{
     position:relative;
+    padding-top:100%;
 }
 .songlists .songs li img{
+    position:absolute;
+    top:0;
+    left:0;
     width:100%;
     vertical-align: middle;
 }
@@ -235,7 +239,7 @@ section.topbar{
     width:230px;
     height:44px;
 }
-.art a{
+.art .art-download{
     display: block;
     color:#D33A31;
     font-size:16px;
