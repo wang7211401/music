@@ -17,6 +17,15 @@ input::-webkit-search-cancel-button {
 body{
     font-family: Helvetica,sans-serif;
 }
+.loading-img{
+    text-align:center;
+}
+.loading-img.active{
+    display: none;
+}
+.loading-img img{
+    vertical-align: middle;
+}
 section.topbar{
     position:fixed;
     width:100%;
