@@ -83,23 +83,25 @@
                             </svg>
                         </div>
                     </form>
-                    <div class="search-default">
-                        <div class="search-hotlists">
-                            <h3>热门搜索</h3>
-                            <ul>
-                                <li><a href="#">宋岳庭</a></li>
-                                <li><a href="#">在人间</a></li>
-                                <li><a href="#">九重山</a></li>
-                                <li><a href="#">远走高飞</a></li>
-                                <li><a href="#">带你去旅行</a></li>
-                                <li><a href="#">童话镇</a></li>
-                                <li><a href="#">周杰伦</a></li>
-                                <li><a href="#">林俊杰</a></li>
-                                <li><a href="#">薛之谦</a></li>
-                                <li><a href="#">消愁</a></li>
-                            </ul>
-                        </div>
+                    <section id="searchResult">
+
+                    </section>
+                    <div class="search-hotlists">
+                        <h3>热门搜索</h3>
+                        <ul>
+                            <li><a href="#">宋岳庭</a></li>
+                            <li><a href="#">在人间</a></li>
+                            <li><a href="#">九重山</a></li>
+                            <li><a href="#">远走高飞</a></li>
+                            <li><a href="#">带你去旅行</a></li>
+                            <li><a href="#">童话镇</a></li>
+                            <li><a href="#">周杰伦</a></li>
+                            <li><a href="#">林俊杰</a></li>
+                            <li><a href="#">薛之谦</a></li>
+                            <li><a href="#">消愁</a></li>
+                        </ul>
                     </div>
+
                 </div>
             </li>
         </ol>
@@ -114,18 +116,6 @@
             $li.addClass('active').siblings().removeClass('active');
             $('.tab-content').children().eq(index).addClass('active').siblings().removeClass('active')
         });
-        $('.search-input')[0].oninput =function(){
-            $('.search-box').addClass('active');
-            if($('.search-input')[0].value === ''){
-                $('.search-box').removeClass('active')
-            }
-        };
-        $('.search-close').on('click',function(){
-            $('.search-input')[0].value='';
-            if($('.search-input')[0].value === ''){
-                $('.search-box').removeClass('active')
-            }
-        })
     </script>
     <script>
         var APP_ID = 'i19UWtaghVE36y85Oo4Uscyx-gzGzoHsz';
@@ -216,6 +206,54 @@
                                 </div>
                             </a>`
                 $topselling.append(toplist)
+            }
+        })
+
+        $('.search-input').on('input',function(e){
+            $('.search-box').addClass('active');
+            $('.search-hotlists').addClass('active');
+            let $input = $(e.currentTarget);
+            let value = $input.val().trim();
+            let searchTitle =`<h3>搜索"${value}"</h3>`;
+            $('#searchResult').append(searchTitle);
+            if(value === ''){
+                $('.search-box').removeClass('active');
+                $('.search-hotlists').removeClass('active');
+                $('#searchResult').empty();
+                return
+            }
+            var querys = new AV.Query('Topsong');
+            querys.contains('singer',value);
+            querys.find().then(function(results){
+//                $('#searchResult').empty();
+                if(results.length === 0){
+                    
+                }else{
+                    for(var i=0;i<results.length;i++){
+                        let song = results[i].attributes;
+                        let ul = `
+                                  <ul>
+                                    <li>
+                                        <svg class="icon-search">
+                                            <use xlink:href="#icon-sousuo"></use>
+                                        </svg>
+                                        <span data-id="${song.objectId}">
+                                            ${song.singer}
+                                        </span>
+                                    </li>
+                                  </ul>`;
+                        $('#searchResult').append(ul)
+                    }
+                }
+            });
+
+        });
+        $('.search-close').on('click',function(){
+            $('.search-input')[0].value = '';
+            if($('.search-input').val() === ''){
+                $('.search-box').removeClass('active');
+                $('.search-hotlists').removeClass('active');
+                $('#searchResult').empty();
             }
         })
 

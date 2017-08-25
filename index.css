@@ -419,19 +419,56 @@ section.topbar{
 .search .search-box.active .search-close{
     display: block;
 }
-.search-default .search-hotlists{
+#searchResult h3{
+    margin-left:10px;
+    padding-right:10px;
+    font-size:15px;
+    color:#50A7D7;
+    line-height:50px;
+    border-bottom:1px solid #F0F1F2;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+#searchResult li{
+    display:flex;
+    align-items:center;
+    height:45px;
+    padding-left:10px;
+}
+#searchResult li .icon-search{
+    width:15px;
+    height:15px;
+    fill:#D6D6D7;
+    margin-right:7px;
+}
+#searchResult li span{
+    display: block;
+    width:100%;
+    color:#333;
+    font-size:15px;
+    line-height:45px;
+    padding-right:10px;
+    border-bottom:1px solid #F0F1F2;
+}
+
+.search-hotlists{
     padding:15px 10px;
 }
-.search-default .search-hotlists h3{
+.search-hotlists.active{
+    display:none;
+}
+.search-hotlists h3{
     font-size:12px;
     color:#666;
 }
-.search-default .search-hotlists ul{
+.search-hotlists ul{
     margin:10px 0;
     display: flex;
     flex-wrap:wrap;
 }
-.search-default .search-hotlists ul li a{
+.search-hotlists ul li a{
     display: flex;
     align-items:center;
     height:32px;
