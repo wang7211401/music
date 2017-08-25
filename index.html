@@ -29,90 +29,7 @@
                 <section class="songlists">
                     <h2>推荐歌单</h2>
                     <ul class="songs">
-                        <li>
-                            <a href="#">
-                                <div class="songs-img">
-                                    <img src="https://i.loli.net/2017/08/22/599c133f0ce84.jpg" alt="">
-                                    <span class="subscribe">
-                                        <svg>
-                                            <use xlink:href="#icon-ep"></use>
-                                        </svg>
-                                        67万
-                                    </span>
-                                </div>
-                                <p>七夕快到了，单身狗有话要说……</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <div class="songs-img">
-                                    <img src="https://i.loli.net/2017/08/22/599c134fe7fb8.jpg" alt="">
-                                    <span class="subscribe">
-                                        <svg>
-                                            <use xlink:href="#icon-ep"></use>
-                                        </svg>
-                                        28万
-                                    </span>
-                                </div>
-                                <p>「柔情呢喃」轻吟时光 你是我无法泅渡的海</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <div class="songs-img">
-                                    <img src="https://i.loli.net/2017/08/22/599c135ea2f79.jpg" alt="">
-                                    <span class="subscribe">
-                                        <svg>
-                                            <use xlink:href="#icon-ep"></use>
-                                        </svg>
-                                        19万
-                                    </span>
-                                </div>
-                                <p>［年代感］欧美原声吉他弹唱精选100首</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <div class="songs-img">
-                                    <img src="https://i.loli.net/2017/08/22/599c13808c493.jpg" alt="">
-                                    <span class="subscribe">
-                                        <svg>
-                                            <use xlink:href="#icon-ep"></use>
-                                        </svg>
-                                        66万
-                                    </span>
-                                </div>
-                                <p>摇滚编年史 Ⅰ 起源</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <div class="songs-img">
-                                    <img src="https://i.loli.net/2017/08/22/599c13b4cba64.jpg" alt="">
-                                    <span class="subscribe">
-                                        <svg>
-                                            <use xlink:href="#icon-ep"></use>
-                                        </svg>
-                                        370万
-                                    </span>
-                                </div>
-                                <p>『开口脆』迷幻嗓音极致瞬间❤️</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <div class="songs-img">
-                                    <img src="https://i.loli.net/2017/08/22/599c13701613f.jpg" alt="">
-                                    <span class="subscribe">
-                                        <svg>
-                                            <use xlink:href="#icon-ep"></use>
-                                        </svg>
-                                        517万
-                                    </span>
-                                </div>
-                                <p>Tomorrowland2017现场歌曲精选</p>
-                            </a>
-                        </li>
+                        
                     </ul>
                 </section>
                 <section class="playlists">
@@ -676,6 +593,7 @@
     </div>
 
     <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="./vendors/av-min.js"></script>
     <script>
         $('.tabs').on('click','li',function(e){
             var $li = $(e.currentTarget);
@@ -696,6 +614,39 @@
             }
         })
     </script>
+    <script>
+        var APP_ID = 'i19UWtaghVE36y85Oo4Uscyx-gzGzoHsz';
+        var APP_KEY = 'J2ge2uYbUiOX1pOAYBILAGon';
+        AV.init({
+            appId: APP_ID,
+            appKey: APP_KEY
+        });
 
+        let $ulsongs = $('ul.songs');
+        var query = new AV.Query('Song');
+        query.find().then(function(results){
+            for(var i=0;i<results.length;i++){
+                let song = results[i].attributes;
+                let li =`<li>
+                            <a href="#">
+                                <div class="songs-img">
+                                    <img src="${song.url}" alt="">
+                                    <span class="subscribe">
+                                        <svg>
+                                            <use xlink:href="#icon-ep"></use>
+                                        </svg>
+                                        ${song.subscribe}
+                                    </span>
+                                </div>
+                                <p>${song.text}</p>
+                            </a>
+                        </li>`
+                $ulsongs.append(li)
+            }
+        },function(error){
+            alert('获取歌曲失败')
+        })
+
+    </script>
 </body>
 </html>
