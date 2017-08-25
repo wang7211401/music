@@ -300,7 +300,7 @@ section.topbar{
     color:#999;
     font-size:17px;
 }
-.top-selling a div.threegroups{
+.top-selling a:nth-child(1) > div.groups,.top-selling a:nth-child(2) > div.groups,.top-selling a:nth-child(3) > div.groups{
     color:#DF3436;
 }
 .top-selling .top-selling-line{
