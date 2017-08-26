@@ -210,30 +210,39 @@
             }
         });
 
+        let timer = undefined;
+        let exist = false;
         $('.search-input').on('input',function(e){
             $('.search-box').addClass('active');
             $('.search-hotlists').addClass('active');
             let $input = $(e.currentTarget);
             let value = $input.val().trim();
-            let searchTitle =`<h3>搜索"${value}"</h3><ul></ul>`;
-            $('#searchResult').append(searchTitle);
+            if(timer){
+                clearTimeout(timer)
+            }
             if(value === ''){
                 $('.search-box').removeClass('active');
                 $('.search-hotlists').removeClass('active');
                 $('#searchResult').empty();
                 return
             }
-            var querys = new AV.Query('Topsong');
-            querys.contains('singer',value);
-            var querys1 = new AV.Query('Topsong');
-            querys1.contains('name',value);
-            var queryObjects =AV.Query.or(querys, querys1);
-            queryObjects.find().then(function(results){
-                $('#searchResult > ul').empty();
-                if(results.length !== 0){
-                    for(var i=0;i<results.length;i++){
-                        let song = results[i].attributes;
-                        let li = `<li>
+            if(exist){
+                $('#searchResult').empty();
+            }
+            timer = setTimeout(function(){
+                let searchTitle =`<h3>搜索"${value}"</h3><ul></ul>`;
+                $('#searchResult').append(searchTitle);
+                var querys = new AV.Query('Topsong');
+                querys.contains('singer',value);
+                var querys1 = new AV.Query('Topsong');
+                querys1.contains('name',value);
+                var queryObjects =AV.Query.or(querys, querys1);
+                queryObjects.find().then(function(results){
+                    timer = undefined;
+                    if(results.length !== 0){
+                        for(var i=0;i<results.length;i++){
+                            let song = results[i].attributes;
+                            let li = `<li>
                                     <svg class="icon-search">
                                         <use xlink:href="#icon-sousuo"></use>
                                     </svg>
@@ -249,11 +258,13 @@
                                         ${song.singer}
                                     </span>
                                   </li>`;
-                        $('#searchResult >ul').append(li)
+                            $('#searchResult >ul').append(li)
+                            exist = true;
+                        }
+                    }else{
                     }
-                }else{
-                }
-            });
+                });
+            },600)
         });
 
         $('.search-hot').on('click','li',function(e){
