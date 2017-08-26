@@ -214,7 +214,7 @@
             $('.search-hotlists').addClass('active');
             let $input = $(e.currentTarget);
             let value = $input.val().trim();
-            let searchTitle =`<h3>搜索"${value}"</h3>`;
+            let searchTitle =`<h3>搜索"${value}"</h3><ul></ul>`;
             $('#searchResult').append(searchTitle);
             if(value === ''){
                 $('.search-box').removeClass('active');
@@ -227,22 +227,19 @@
             querys.find().then(function(results){
 //                $('#searchResult').empty();
                 if(results.length === 0){
-                    
+
                 }else{
                     for(var i=0;i<results.length;i++){
                         let song = results[i].attributes;
-                        let ul = `
-                                  <ul>
-                                    <li>
-                                        <svg class="icon-search">
-                                            <use xlink:href="#icon-sousuo"></use>
-                                        </svg>
-                                        <span data-id="${song.objectId}">
-                                            ${song.singer}
-                                        </span>
-                                    </li>
-                                  </ul>`;
-                        $('#searchResult').append(ul)
+                        let li = `<li>
+                                    <svg class="icon-search">
+                                        <use xlink:href="#icon-sousuo"></use>
+                                    </svg>
+                                    <span data-id="${song.objectId}">
+                                        ${song.singer}
+                                    </span>
+                                  </li>`;
+                        $('#searchResult >ul').append(li)
                     }
                 }
             });
