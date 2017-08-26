@@ -29,7 +29,7 @@
                 <section class="songlists">
                     <h2>推荐歌单</h2>
                     <div class="loading-img">
-                        <img src="https://i.loli.net/2017/08/25/599ff0cd5ab62.gif" alt="">
+                        <img src="https://i.loli.net/2017/08/26/59a135bdc71ff.gif" alt="">
                     </div>
                     <ul class="songs">
                         
@@ -38,7 +38,7 @@
                 <section class="playlists">
                     <h2>最新音乐</h2>
                     <div class="loading-img">
-                        <img src="https://i.loli.net/2017/08/25/599ff0cd5ab62.gif" alt="">
+                        <img src="https://i.loli.net/2017/08/26/59a135bdc71ff.gif" alt="">
                     </div>
                     <div class="playlists-data">
 
@@ -60,7 +60,7 @@
                     </div>
                 </div>
                 <div class="loading-img">
-                    <img src="https://i.loli.net/2017/08/25/599ff0cd5ab62.gif" alt="">
+                    <img src="https://i.loli.net/2017/08/26/59a135bdc71ff.gif" alt="">
                 </div>
                 <div class="top-selling">
 
@@ -89,7 +89,7 @@
                     <div class="search-hotlists">
                         <h3>热门搜索</h3>
                         <div class="loading-img">
-                            <img src="https://i.loli.net/2017/08/25/599ff0cd5ab62.gif" alt="">
+                            <img src="https://i.loli.net/2017/08/26/59a135bdc71ff.gif" alt="">
                         </div>
                         <ul class="search-hot">
 
@@ -229,7 +229,7 @@
             querys1.contains('name',value);
             var queryObjects =AV.Query.or(querys, querys1);
             queryObjects.find().then(function(results){
-//                $('#searchResult').empty();
+                $('#searchResult > ul').empty();
                 if(results.length !== 0){
                     for(var i=0;i<results.length;i++){
                         let song = results[i].attributes;
@@ -270,7 +270,6 @@
             querys1.contains('name',text);
             var queryObjects =AV.Query.or(querys, querys1);
             queryObjects.find().then(function(results){
-//                $('#searchResult').empty();
                 if(results.length !== 0){
                     for(var i=0;i<results.length;i++){
                         let song = results[i].attributes;
