@@ -230,12 +230,18 @@
             var queryObjects =AV.Query.or(querys, querys1);
             queryObjects.find().then(function(results){
 //                $('#searchResult').empty();
-                if(results.length === 0){
-
-                }else{
+                if(results.length !== 0){
                     for(var i=0;i<results.length;i++){
                         let song = results[i].attributes;
                         let li = `<li>
+                                    <svg class="icon-search">
+                                        <use xlink:href="#icon-sousuo"></use>
+                                    </svg>
+                                    <span data-id="${song.objectId}">
+                                        ${song.name}
+                                    </span>
+                                  </li>
+                                  <li>
                                     <svg class="icon-search">
                                         <use xlink:href="#icon-sousuo"></use>
                                     </svg>
@@ -245,6 +251,7 @@
                                   </li>`;
                         $('#searchResult >ul').append(li)
                     }
+                }else{
                 }
             });
         });
@@ -268,6 +275,14 @@
                     for(var i=0;i<results.length;i++){
                         let song = results[i].attributes;
                         let li = `<li>
+                                    <svg class="icon-search">
+                                        <use xlink:href="#icon-sousuo"></use>
+                                    </svg>
+                                    <span data-id="${song.objectId}">
+                                        ${song.name}
+                                    </span>
+                                  </li>
+                                  <li>
                                     <svg class="icon-search">
                                         <use xlink:href="#icon-sousuo"></use>
                                     </svg>
