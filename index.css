@@ -463,12 +463,12 @@ section.topbar{
     font-size:12px;
     color:#666;
 }
-.search-hotlists ul{
+.search-hotlists .search-hot{
     margin:10px 0;
     display: flex;
     flex-wrap:wrap;
 }
-.search-hotlists ul li a{
+.search-hotlists .search-hot li a{
     display: flex;
     align-items:center;
     height:32px;

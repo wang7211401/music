@@ -88,20 +88,13 @@
                     </section>
                     <div class="search-hotlists">
                         <h3>热门搜索</h3>
-                        <ul>
-                            <li><a href="#">宋岳庭</a></li>
-                            <li><a href="#">在人间</a></li>
-                            <li><a href="#">九重山</a></li>
-                            <li><a href="#">远走高飞</a></li>
-                            <li><a href="#">带你去旅行</a></li>
-                            <li><a href="#">童话镇</a></li>
-                            <li><a href="#">周杰伦</a></li>
-                            <li><a href="#">林俊杰</a></li>
-                            <li><a href="#">薛之谦</a></li>
-                            <li><a href="#">消愁</a></li>
+                        <div class="loading-img">
+                            <img src="https://i.loli.net/2017/08/25/599ff0cd5ab62.gif" alt="">
+                        </div>
+                        <ul class="search-hot">
+
                         </ul>
                     </div>
-
                 </div>
             </li>
         </ol>
@@ -127,6 +120,8 @@
 
 
 
+
+
         let $ulsongs = $('ul.songs');
         var query = new AV.Query('Song');
         query.find().then(function(results){
@@ -149,8 +144,6 @@
                         </li>`;
                 $ulsongs.append(li)
             }
-        },function(error){
-            alert('获取歌曲失败')
         });
 
         let $playlists =$('div.playlists-data');
@@ -178,7 +171,7 @@
                 $playlists.append($li)
             }
         },function(error){
-            alert('获取歌曲失败')
+            alert('获取歌曲链表失败')
         });
 
         let $topselling = $('div.top-selling');
@@ -204,10 +197,21 @@
                                         </svg>
                                     </div>
                                 </div>
-                            </a>`
+                            </a>`;
                 $topselling.append(toplist)
             }
-        })
+        });
+
+        let $hot = $('ul.search-hot');
+        var hotsearch = new AV.Query('Hotsearch');
+        hotsearch.find().then(function(results){
+            $('.loading-img').addClass('active');
+            for(var i=0;i<results.length;i++){
+                let search = results[i].attributes;
+                let li =`<li><a href="#">${search.name}</a></li>`;
+                $hot.append(li)
+            }
+        });
 
         $('.search-input').on('input',function(e){
             $('.search-box').addClass('active');
@@ -243,7 +247,6 @@
                     }
                 }
             });
-
         });
         $('.search-close').on('click',function(){
             $('.search-input')[0].value = '';
@@ -253,7 +256,6 @@
                 $('#searchResult').empty();
             }
         })
-
 
     </script>
 </body>
