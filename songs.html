@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="songs.css">
+    <script src="//at.alicdn.com/t/font_393221_hhvp2hpq1dm6xbt9.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="top-wrap">
+            <div class="top-disc">
+                <div class="top-disc-turn">
+                    <div class="top-img">
+                        <img src="https://i.loli.net/2017/08/27/59a240edc4069.jpg" alt="">
+                    </div>
+                </div>
+                <svg class="icon-play">
+                    <use xlink:href="#icon-cplay1"></use>
+                </svg>
+                <svg class="icon-pause">
+                    <use xlink:href="#icon-pause"></use>
+                </svg>
+                <img src="https://i.loli.net/2017/08/27/59a2410ddb21b.png" alt="">
+            </div>
+        </div>
+        <div class="song-content">
+            <h3>让我留在你身边 - <span>陈奕迅</span></h3>
+            <div class="song-lyric">
+                <p>作曲 : 唐汉霄</p>
+                <p>作词 : 唐汉霄</p>
+                <p>我从来不说话</p>
+            </div>
+        </div>
+        <div class="footer">
+            <a class="footer-open" href="#">打开</a>
+            <a class="download" href="#">下载</a>
+        </div>
+    </div>
+    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        let audio = document.createElement('audio');
+        audio.src="http://ov8cpmo38.bkt.clouddn.com/%E9%99%88%E5%A5%95%E8%BF%85%20-%20%E8%AE%A9%E6%88%91%E7%95%99%E5%9C%A8%E4%BD%A0%E8%BA%AB%E8%BE%B9.mp3";
+        document.body.appendChild(audio);
+        audio.oncanplay=function(){
+            audio.play();
+            $('.top-disc').addClass('active')
+        };
+        audio.onended =function(){
+            $('.top-disc').removeClass('active');
+        };
+        $('.icon-play').on('click',function(){
+            audio.play();
+            $('.top-disc').addClass('active');
+        });
+        $('.icon-pause').on('click',function(){
+            audio.pause();
+            $('.top-disc').removeClass('active');
+        })
+    </script>
+</body>
+</html>

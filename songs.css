@@ -1,0 +1,177 @@
+*{ margin:0;  padding:0; box-sizing:border-box; }
+*::before{box-sizing:border-box;}
+*::after{box-sizing:border-box;}
+ul,ol{list-style: none;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4,h5,h6{font-weight:normal;}
+body{
+    font-family: Helvetica,sans-serif;
+}
+@keyframes rotate{
+    0% {
+        transform:rotate(0deg);
+    }
+    100% {
+        transform:rotate(1turn);
+    }
+}
+.container{
+    background:transparent url(https://i.loli.net/2017/08/27/59a243ae5722c.jpg) no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    height:100vh;
+}
+.top-wrap{
+    padding-top:19.6875vw;
+    margin:0 auto;
+    position: relative;
+}
+.top-wrap .top-disc{
+    position: relative;
+    width:77.5vw;
+    height:77.5vw;
+    margin:0 auto;
+}
+.top-wrap .top-disc .top-disc-turn{
+    width:100%;
+    height:100%;
+    position: relative;
+}
+.top-wrap .top-disc .top-disc-turn::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: url(https://i.loli.net/2017/08/27/59a24681d5aff.png) no-repeat;
+    background-size:contain;
+}
+.top-wrap .top-disc .top-disc-turn::after{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: url(https://i.loli.net/2017/08/27/59a2475fd6237.png) no-repeat;
+    background-size: contain;
+    animation: rotate 20s infinite linear;
+    animation-play-state: paused;
+}
+.top-wrap .top-disc.active .top-disc-turn::after{
+    animation-play-state: running;
+}
+.top-wrap .top-disc .top-disc-turn .top-img{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:46.875vw;
+    height:46.875vw;
+    background: url(https://i.loli.net/2017/08/27/59a24b6066cd0.png);
+    border-radius: 50%;
+    transform: translate(-50%,-50%);
+    overflow: hidden;
+}
+.top-wrap .top-disc .top-disc-turn .top-img img{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    animation: rotate 20s infinite linear;
+    animation-play-state: paused;
+}
+.top-wrap .top-disc.active .top-disc-turn .top-img img{
+    animation-play-state: running;
+}
+.top-wrap .top-disc .icon-play{
+    display:block;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width: 56px;
+    height:56px;
+    fill:#FFF;
+    border-radius:50%;
+    background:rgba(0,0,0,0.1);
+}
+.top-wrap .top-disc .icon-pause{
+    display: none;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width: 56px;
+    height:56px;
+    fill:#FFF;
+    border-radius:50%;
+    background:rgba(0,0,0,0.1);
+}
+.top-wrap .top-disc.active .icon-play{
+    display: none;
+}
+.top-wrap .top-disc.active .icon-pause{
+    display: block;
+}
+.top-wrap .top-disc > img{
+    display: block;
+    position:absolute;
+    width:26.25vw;
+    height:38.125vw;
+    top: -19.6875vw;
+    left: 33.4375vw;
+    z-index: 2;
+}
+.song-content{
+    padding:0 35px;
+    margin-top:25px;
+    text-align: center;
+    flex-grow: 1;
+}
+.song-content h3{
+    font-size:18px;
+    color:#fff;
+}
+.song-content h3 span{
+    color:#ADA9A3;
+    font-size:16px;
+}
+.song-content .song-lyric{
+    margin-top:14px;
+}
+.song-content .song-lyric p{
+    font-size:16px;
+    padding-bottom:8px;
+    color:#ADA9A3;
+}
+.song-content .song-lyric p.active{
+    color:#fff;
+}
+.footer{
+    padding-bottom:20px;
+    text-align: center;
+}
+.footer .footer-open{
+    display: inline-block;
+    font-size:18px;
+    color:#D43421;
+    line-height: 42px;
+    padding:0 50px;
+    margin-right: 4px;
+    border:1px solid;
+    border-radius:4px;
+    letter-spacing: 5px;
+}
+.footer .download{
+    display: inline-block;
+    font-size:18px;
+    color:#fff;
+    background:#D43421;
+    line-height: 42px;
+    padding:0 50px;
+    margin-left:4px;
+    border-radius:4px;
+    letter-spacing: 5px;
+}
