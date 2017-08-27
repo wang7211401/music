@@ -14,6 +14,8 @@
         <div class="top-wrap">
             <div class="top-disc">
                 <div class="top-disc-turn">
+                    <img  class="disc-before" src="https://i.loli.net/2017/08/27/59a24681d5aff.png" alt="">
+                    <img class="disc-after" src="https://i.loli.net/2017/08/27/59a2475fd6237.png" alt="">
                     <div class="top-img">
                         <img src="https://i.loli.net/2017/08/27/59a240edc4069.jpg" alt="">
                     </div>
@@ -45,13 +47,6 @@
         let audio = document.createElement('audio');
         audio.src="http://ov8cpmo38.bkt.clouddn.com/%E9%99%88%E5%A5%95%E8%BF%85%20-%20%E8%AE%A9%E6%88%91%E7%95%99%E5%9C%A8%E4%BD%A0%E8%BA%AB%E8%BE%B9.mp3";
         document.body.appendChild(audio);
-        audio.oncanplay=function(){
-            audio.play();
-            $('.top-disc').addClass('active')
-        };
-        audio.onended =function(){
-            $('.top-disc').removeClass('active');
-        };
         $('.icon-play').on('click',function(){
             audio.play();
             $('.top-disc').addClass('active');
@@ -59,7 +54,11 @@
         $('.icon-pause').on('click',function(){
             audio.pause();
             $('.top-disc').removeClass('active');
-        })
+            alert('暂停');
+        });
+        audio.onended =function(){
+            $('.top-disc').removeClass('active');
+        };
     </script>
 </body>
 </html>
