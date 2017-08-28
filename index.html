@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>网易云音乐</title>
     <link rel="stylesheet" href="index.css">
-    <script src="//at.alicdn.com/t/font_393221_hhvp2hpq1dm6xbt9.js"></script>
+    <script src="//at.alicdn.com/t/font_393221_kt57djs4042njyvi.js"></script>
 </head>
 <body>
     <div class="container">
@@ -84,7 +84,8 @@
                         </div>
                     </form>
                     <section id="searchResult">
-
+                        <h3></h3>
+                        <ul></ul>
                     </section>
                     <div class="search-hotlists">
                         <h3>热门搜索</h3>
@@ -94,6 +95,40 @@
                         <ul class="search-hot">
 
                         </ul>
+                    </div>
+                    <div class="search-history">
+                        <ul>
+                            <li>
+                                <svg class="history-timeIcon">
+                                    <use xlink:href="#icon-timecolck"></use>
+                                </svg>
+                                <div class="history-name">
+                                    <span>sss</span>
+                                    <svg class="history-deleteIcon">
+                                        <use xlink:href="#icon-delete"></use>
+                                    </svg>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="search-songs">
+                        <a href="#">
+                            <div class="playlists-content">
+                                <p>望仙语<small>(动画《万古仙穹》片尾曲)</small></p>
+                                <p>
+                                    <i class="icon-sq"></i>
+                                    北小堂-万古仙穹 动画原生带
+                                </p>
+                            </div>
+                            <div class="player">
+                                <svg class="icon play">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-cplay1"></use>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="noResult">
+                        <div>暂无搜索结果</div>
                     </div>
                 </div>
             </li>
@@ -220,6 +255,7 @@
             if(timer){
                 clearTimeout(timer)
             }
+            $('#searchResult > h3').text(`搜索"${value}"`);
             if(value === ''){
                 $('.search-box').removeClass('active');
                 $('.search-hotlists').removeClass('active');
@@ -230,8 +266,6 @@
                 $('#searchResult').empty();
             }
             timer = setTimeout(function(){
-                let searchTitle =`<h3>搜索"${value}"</h3><ul></ul>`;
-                $('#searchResult').append(searchTitle);
                 var querys = new AV.Query('Topsong');
                 querys.contains('singer',value);
                 var querys1 = new AV.Query('Topsong');

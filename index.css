@@ -480,3 +480,34 @@ section.topbar{
     border-radius:32px;
     border:1px solid #d3d4da;
 }
+.search-history li{
+    display: flex;
+    height:45px;
+    align-items: center;
+}
+.search-history li .history-timeIcon{
+    margin:0 10px;
+    width:15px;
+    height:15px;
+    display: block;
+}
+.search-history li .history-name{
+    display:flex;
+    align-items: center;
+    width:100%;
+    line-height: 45px;
+    border-bottom:1px solid #F1F1F2;
+}
+.search-history li .history-name span{
+    flex-grow:1;
+    overflow: hidden;
+    margin-right:10px;
+    text-overflow: ellipsis;
+}
+.search-history li .history-name .history-deleteIcon{
+    width:12px;
+    height:12px;
+    margin-right:18px;
+    margin-left:2px;
+    vertical-align: middle;
+}
