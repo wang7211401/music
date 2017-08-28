@@ -120,6 +120,12 @@ body{
     top: -19.6875vw;
     left: 33.4375vw;
     z-index: 2;
+    transform: rotate(-25deg);
+    transform-origin: 9% -2%;
+    transition: transform 0.6s;
+}
+.top-wrap .top-disc.active > img{
+    transform: rotate(0deg);
 }
 .song-content{
     padding:0 35px;
