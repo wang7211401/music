@@ -419,6 +419,12 @@ section.topbar{
 .search .search-box.active .search-close{
     display: block;
 }
+#searchResult{
+    display: none;
+}
+#searchResult.active{
+    display: block;
+}
 #searchResult h3{
     margin-left:10px;
     padding-right:10px;
@@ -480,6 +486,12 @@ section.topbar{
     border-radius:32px;
     border:1px solid #d3d4da;
 }
+.search-history{
+    display: none;
+}
+.search-history.active{
+    display:block;
+}
 .search-history li{
     display: flex;
     height:45px;
@@ -487,7 +499,8 @@ section.topbar{
 }
 .search-history li .history-timeIcon{
     margin:0 10px;
-    width:15px;
+    width:auto;
+    max-width: 17px;
     height:15px;
     display: block;
 }
@@ -497,9 +510,9 @@ section.topbar{
     width:100%;
     line-height: 45px;
     border-bottom:1px solid #F1F1F2;
+    justify-content: space-between;
 }
 .search-history li .history-name span{
-    flex-grow:1;
     overflow: hidden;
     margin-right:10px;
     text-overflow: ellipsis;
@@ -510,4 +523,64 @@ section.topbar{
     margin-right:18px;
     margin-left:2px;
     vertical-align: middle;
+}
+.search-songs a{
+    display: flex;
+    justify-content: space-between;
+    margin-left:9px;
+    padding:6px 0;
+    border-bottom:1px solid #F1F1F2;
+}
+.search-songs .search-songs-content p:first-child{
+    padding: 1px 0;
+    font-size: 17px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.search-songs .search-songs-content p small{
+    font-size: 17px;
+    color: #888;
+    margin-left: 4px;
+}
+.search-songs .search-songs-content p:nth-child(2){
+    padding: 1px 0;
+    font-size: 12px;
+    color: #888;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.search-songs  .search-songs-content p .icon-sq {
+    display: inline-block;
+    width: 12px;
+    height: 8px;
+    background: url(https://i.loli.net/2017/08/23/599d3e01cc534.png);
+    background-size: 166px 97px;
+    vertical-align: middle;
+}
+.search-songs .search-songs-player{
+    display: flex;
+    align-items: center;
+    padding: 10px 10px;
+}
+.search-songs .search-songs-player .icon-play {
+    width: 22px;
+    height: 22px;
+    fill: #AAA;
+}
+.noResult{
+    display: none;
+}
+.noResult.active{
+    display: block;
+}
+.noResult p{
+    text-align:center;
+    padding:20px 0;
+}
+.noResult p{
+    display: block;
 }
