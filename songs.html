@@ -5,8 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
     <link rel="stylesheet" href="songs.css">
+    <link rel="shortcut icon" href="images/favicon.ico">
     <script src="//at.alicdn.com/t/font_393221_hhvp2hpq1dm6xbt9.js"></script>
 </head>
 <body>
@@ -67,6 +67,8 @@
             let name = results.attributes.name;
             let singer = results.attributes.singer.split('-')[0];
             let lyric =results.attributes.lyric;
+            let title = `<title>${name}</title>`;
+            $('head').append(title);
             $('.page').css("background-image", `url(${images})`);
             let img = `<img src="${images}" alt="">`;
             $('.top-img').append(img);
