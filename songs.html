@@ -11,13 +11,14 @@
 </head>
 <body>
     <div class="container">
+        <div class="page"></div>
         <div class="top-wrap">
             <div class="top-disc">
                 <div class="top-disc-turn">
                     <img  class="disc-before" src="https://i.loli.net/2017/08/27/59a24681d5aff.png" alt="">
                     <img class="disc-after" src="https://i.loli.net/2017/08/27/59a2475fd6237.png" alt="">
                     <div class="top-img">
-                        <img src="https://i.loli.net/2017/08/27/59a240edc4069.jpg" alt="">
+
                     </div>
                 </div>
                 <svg class="icon-play">
@@ -30,11 +31,9 @@
             </div>
         </div>
         <div class="song-content">
-            <h3>让我留在你身边 - <span>陈奕迅</span></h3>
+
             <div class="song-lyric">
-                <p>作曲 : 唐汉霄</p>
-                <p>作词 : 唐汉霄</p>
-                <p>我从来不说话</p>
+                <div class="lines"></div>
             </div>
         </div>
         <div class="footer">
@@ -43,21 +42,97 @@
         </div>
     </div>
     <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="vendors/av-min.js"></script>
     <script>
-        let audio = document.createElement('audio');
-        audio.src="http://ov8cpmo38.bkt.clouddn.com/%E9%99%88%E5%A5%95%E8%BF%85%20-%20%E8%AE%A9%E6%88%91%E7%95%99%E5%9C%A8%E4%BD%A0%E8%BA%AB%E8%BE%B9.mp3";
-        document.body.appendChild(audio);
-        $('.icon-play').on('click',function(){
-            audio.play();
-            $('.top-disc').addClass('active');
+        var APP_ID = 'i19UWtaghVE36y85Oo4Uscyx-gzGzoHsz';
+        var APP_KEY = 'J2ge2uYbUiOX1pOAYBILAGon';
+        AV.init({
+            appId: APP_ID,
+            appKey: APP_KEY
         });
-        $('.icon-pause').on('click',function(){
-            audio.pause();
-            $('.top-disc').removeClass('active');
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+        var id = getParameterByName('id');
+        var query = new AV.Query('Topsong');
+        query.get(id).then(function(results){
+            let url= results.attributes.url;
+            let images = results.attributes.images;
+            let name = results.attributes.name;
+            let singer = results.attributes.singer.split('-')[0];
+            let lyric =results.attributes.lyric;
+            $('.page').css("background-image", `url(${images})`);
+            let img = `<img src="${images}" alt="">`;
+            $('.top-img').append(img);
+            let h3 =`<h3>${name} - <span>${singer}</span></h3>`;
+            $('.song-content').prepend(h3);
+            ininPlayer(url);
+            parseLyric(lyric);
         });
-        audio.onended =function(){
-            $('.top-disc').removeClass('active');
-        };
+        function parseLyric(lyric){
+            let array = lyric.split('\n');
+            let regex = /^\[(.+)\](.*)$/;
+            array = array.map(function(string, index){
+                let matches = string.match(regex);
+                if(matches){
+                    return {time: matches[1], words: matches[2]}
+                }
+            });
+            let $lyriclines = $('.lines');
+            array.map(function(object){
+                if(!object){return}
+                let $p = $('<p/>');
+                $p.attr('data-time', object.time).text(object.words);
+                $lyriclines.append($p)
+            })
+        }
+        function ininPlayer(url){
+            var audio = document.createElement('audio');
+            audio.src= url;
+            document.body.appendChild(audio);
+            $('.icon-play').on('click',function(){
+                audio.play();
+                $('.top-disc').addClass('active');
+            });
+            $('.icon-pause').on('click',function(){
+                audio.pause();
+                $('.top-disc').removeClass('active');
+            });
+            audio.onended =function(){
+                $('.top-disc').removeClass('active');
+            };
+            setInterval(function(){
+                let seconds = audio.currentTime;
+                let munites = ~~(seconds / 60);
+                let left = seconds - munites * 60;
+                let time = `${pad(munites)}:${pad(left)}`;
+                let $lines = $('.lines >p');
+                let $whichLine;
+                for(let i=0;i<$lines.length;i++){
+                    let currentLineTime = $lines.eq(i).attr('data-time');
+                    let nextLineTime = $lines.eq(i+1).attr('data-time');
+                    if($lines.eq(i+1).length !==0 && currentLineTime < time && nextLineTime > time){
+                        $whichLine = $lines.eq(i)
+                    }
+                }
+                if($whichLine){
+                    $whichLine.addClass('active').prev().removeClass('active');
+                    let top = $whichLine.offset().top;
+                    let linesTop = $('.lines').offset().top;
+                    let delta = top - linesTop - $('.song-lyric').height()/3;
+                    $('.lines').css('transform',`translateY(-${delta}px)`)
+                }
+            },300);
+        }
+        function pad(number){
+            return number >=10 ? number + '' : '0' + number
+        }
     </script>
 </body>
 </html>

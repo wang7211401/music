@@ -156,13 +156,14 @@
         });
 
         let $playlists =$('div.playlists-data');
-        var playlist = new AV.Query('Playlist');
+        var playlist = new AV.Query('Topsong');
         playlist.find().then(function(results){
             $('.loading-img').addClass('active');
-            for(var i=0;i<results.length;i++){
+            for(var i=0;i<10;i++){
                 let songs = results[i].attributes;
+                let songsId = results[i].id;
                 let $li = `<div class="playlists-left">
-                            <a href="#">
+                            <a href="/songs.html?id=${songsId}">
                                 <div class="playlists-content">
                                     <p>${songs.name}<small>${songs.subtitle}</small></p>
                                     <p>
@@ -190,7 +191,8 @@
             for(var i=0;i<results.length;i++){
                 var number =((i+1)<10) ? ('0'+ (i+1)) : (i+1);
                 let topsongs = results[i].attributes;
-                let toplist =`<a href="#">
+                let topsongsId = results[i].id;
+                let toplist =`<a href="/songs.html?id=${topsongsId}">
                                 <div class="groups">${number}</div>
                                 <div class="top-selling-line">
                                     <div class="top-selling-content">
@@ -311,7 +313,8 @@
                 }
                 for(var i=0;i<results.length;i++){
                     let searchSongs = results[i].attributes;
-                    let songs= `<a href="#">
+                    let searchSongsId = results[i].id;
+                    let songs= `<a href="/songs.html?id=${searchSongsId}">
                                         <div class="search-songs-content">
                                             <p>${searchSongs.name}<small>${searchSongs.subtitle}</small></p>
                                             <p>
