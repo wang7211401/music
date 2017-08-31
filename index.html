@@ -122,7 +122,6 @@
             $li.addClass('active').siblings().removeClass('active');
             $('.tab-content').children().eq(index).addClass('active').siblings().removeClass('active')
         });
-
     </script>
     <script>
         var APP_ID = 'i19UWtaghVE36y85Oo4Uscyx-gzGzoHsz';
@@ -353,7 +352,6 @@
                 $('.noResult').removeClass('active');
             }
         });
-        console.log($('.search-history ul'));
         $('.search-history ul').on('click','span',function(e){
             let event = $(e.currentTarget);
             let text = event.text();
