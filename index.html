@@ -139,7 +139,7 @@
             for(var i=0;i<results.length;i++){
                 let song = results[i].attributes;
                 let li =`<li>
-                            <a href="#">
+                            <a href="/music/playlist.html?id=${results[i].id}">
                                 <div class="songs-img">
                                     <img src="${song.url}" alt="">
                                     <span class="subscribe">
@@ -181,8 +181,6 @@
                         </div>`;
                 $playlists.append($li)
             }
-        },function(error){
-            alert('获取歌曲链表失败')
         });
 
         let $topselling = $('div.top-selling');
