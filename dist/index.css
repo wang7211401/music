@@ -1,0 +1,654 @@
+*{ margin:0;  padding:0; -webkit-box-sizing:border-box; box-sizing:border-box; }
+*::before{-webkit-box-sizing:border-box;box-sizing:border-box;}
+*::after{-webkit-box-sizing:border-box;box-sizing:border-box;}
+ul,ol{list-style: none;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4,h5,h6{font-weight:normal;}
+input[type=search] {
+    -webkit-appearance: none;
+    border: 0;
+    border-radius: 0;
+    outline: 0;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+    display: none;
+}
+body{
+    font-family: Helvetica,sans-serif;
+}
+.loading-img{
+    text-align:center;
+}
+.loading-img.active{
+    display: none;
+}
+.loading-img img{
+    vertical-align: middle;
+}
+section.topbar{
+    position:fixed;
+    width:100%;
+    height:64px;
+    top:0;
+    left:0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align:center;
+        -ms-flex-align:center;
+            align-items:center;
+    background: #D43C33;
+    padding:17px 10px;
+    z-index:3;
+}
+.topbar .logo .topsvg{
+    width:142px;
+    height:25px;
+    vertical-align: top;
+}
+.topbar a{
+    display:block;
+    color:white;
+    position:relative;
+    font-size:15px;
+    padding:5px 10px;
+}
+.topbar a::after{
+    content:'';
+    position:absolute;
+    width:200%;
+    height:200%;
+    top:0;
+    left:0;
+    border:1px solid white;
+    border-radius:30px;
+    -webkit-transform:scale(0.5);
+            transform:scale(0.5);
+    -webkit-transform-origin: 0 0;
+            transform-origin: 0 0;
+}
+.tabs-container{
+    position:fixed;
+    width:100%;
+    top:64px;
+    left:0;
+    background: #fff;
+    z-index:3;
+}
+.tabs{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    border-bottom:1px solid #ccc;
+}
+.tabs li{
+    width:33.333333%;
+    text-align:center;
+}
+.tabs > li >span{
+    display:inline-block;
+    vertical-align: top;
+    font-size:15px;
+    padding:10px 5px;
+    position:relative;
+}
+.tabs > li.active>span{
+    color:#D43C33;
+}
+.tabs > li.active >span::after{
+    content:'';
+    position:absolute;
+    width:100%;
+    bottom:-1px;
+    left:0;
+    border-bottom:2px solid red;
+}
+.tab-content{
+    margin-top:104px;
+}
+.tab-content >li{
+    display: none;
+}
+.tab-content >li.active{
+    display: block;
+}
+.songlists{
+    padding-top:20px;
+}
+.songlists h2{
+    font-size:17px;
+    margin-bottom:14px;
+    position:relative;
+    padding-left:9px;
+    line-height:1;
+}
+.songlists h2::after{
+    content:'';
+    position:absolute;
+    height:100%;
+    top:0;
+    left:0;
+    border-left:2px solid #D43C33;
+}
+.songlists .songs{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -ms-flex-wrap:wrap;
+        flex-wrap:wrap;
+    -webkit-box-pack:justify;
+        -ms-flex-pack:justify;
+            justify-content:space-between;
+}
+.songlists .songs li{
+    width:calc(33.333333% - 2px);
+    margin-bottom:16px;
+}
+.songlists .songs li a{
+    display:block;
+}
+.songlists .songs li a .songs-img{
+    position:relative;
+    padding-top:100%;
+}
+.songlists .songs li img{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    vertical-align: middle;
+}
+.songlists .songs li a .songs-img .subscribe{
+    position:absolute;
+    left:0;
+    top:2px;
+    font-size:12px;
+    padding-right: 5px;
+    text-align: end;
+    color:#fff;
+    width:100%;
+    text-shadow:1px 0 0 rgba(0,0,0,.15);
+    background-image:-webkit-gradient(linear,left top, left bottom,from(rgba(0,0,0,.2)),to(transparent));
+    background-image:linear-gradient(180deg,rgba(0,0,0,.2),transparent);
+}
+.songlists .songs li a .songs-img .subscribe svg{
+    width:11px;
+    height:10px;
+}
+.songlists .songs li p{
+    padding:6px 2px 0 6px;
+    font-size:13px;
+    line-height:1.2;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.playlists h2{
+    font-size:17px;
+    margin-top:20px;
+    margin-bottom:14px;
+    position:relative;
+    padding-left:9px;
+    line-height:1;
+}
+.playlists h2::after{
+    content:'';
+    position:absolute;
+    height:100%;
+    top:0;
+    left:0;
+    border-left:2px solid #D43C33;
+}
+.playlists .playlists-left{
+    padding-left: 9px;
+}
+.playlists .playlists-left a{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding:6px 0;
+    border-bottom:1px solid #F1F1F2;
+}
+.playlists .playlists-left .playlists-content p:first-child{
+    padding:1px 0;
+    font-size:17px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.playlists .playlists-left .playlists-content p small{
+    font-size:17px;
+    color:#888;
+    margin-left:4px;
+}
+.playlists .playlists-left .playlists-content p:nth-child(2){
+    padding:1px 0;
+    font-size:12px;
+    color:#888;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.playlists .playlists-left .playlists-content p .icon-sq{
+    display:inline-block;
+    width:12px;
+    height:8px;
+    background: url(https://i.loli.net/2017/08/23/599d3e01cc534.png);
+    background-size: 166px 97px;
+    vertical-align:middle;
+}
+.playlists .playlists-left a .player{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding:10px 10px;
+}
+.playlists .playlists-left a .play{
+    width:22px;
+    height:22px;
+    fill:#AAAAAA;
+}
+.art{
+    text-align: center;
+    margin-top:4px;
+    padding-top:63px;
+    padding-bottom:10px;
+    background:url(https://i.loli.net/2017/08/23/599d4563dc2c5.png) no-repeat;
+    background-size:cover;
+}
+.art .logosvg svg{
+    display:block;
+    margin:0 auto;
+    width:230px;
+    height:44px;
+}
+.art .art-download{
+    display: block;
+    color:#D33A31;
+    font-size:16px;
+    line-height: 38px;
+    border:1px solid #D33A31;
+    border-radius:38px;
+    margin:15px 37px 5px;
+}
+.art p{
+    font-size:12px;
+    color:#888;
+    -webkit-transform:scale(.75);
+            transform:scale(.75);
+}
+.hotsong{
+    margin-top:104px;
+    background:url(https://i.loli.net/2017/08/23/599d8806abbd6.jpg);
+    background-size:cover;
+    overflow: hidden;
+}
+.hotsong .hotlist{
+    padding-left: 20px;
+    margin:26px 0;
+}
+.hotsong .hotlist .cloudmusic{
+    width:142px;
+    height:67px;
+    background: url(https://i.loli.net/2017/08/23/599d3e01cc534.png) -24px 68px;
+    background-size: 166px 97px;
+}
+.hotsong .hotlist .hottime{
+    margin-top:10px;
+    font-size: 12px;
+    color:#EEE1DD;
+    -webkit-transform:scale(.91);
+            transform:scale(.91);
+    -webkit-transform-origin:0 0;
+            transform-origin:0 0;
+}
+.top-selling{
+    padding-left:9px;
+}
+.top-selling a{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.top-selling a div.groups{
+    padding-right: 11px;
+    margin:auto;
+    color:#999;
+    font-size:17px;
+}
+.top-selling a:nth-child(1) > div.groups,.top-selling a:nth-child(2) > div.groups,.top-selling a:nth-child(3) > div.groups{
+    color:#DF3436;
+}
+.top-selling .top-selling-line{
+    width:100%;
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding-bottom:5px;
+    border-bottom:1px solid #F1F1F2;
+}
+.top-selling .top-selling-content{
+    overflow: hidden;
+}
+.top-selling a .top-selling-content p:first-child {
+    margin-top:6px;
+    padding: 1px 0;
+    font-size: 17px;
+    color:#333333;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.top-selling .top-selling-content p small{
+    font-size:17px;
+    color:#888;
+    margin-left:4px;
+}
+.top-selling .top-selling-content p:nth-child(2){
+    padding:1px 0;
+    font-size:12px;
+    color:#888;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.top-selling .top-selling-content p .icon-sq{
+    display:inline-block;
+    width:12px;
+    height:8px;
+    background: url(https://i.loli.net/2017/08/23/599d3e01cc534.png);
+    background-size: 166px 97px;
+    vertical-align:middle;
+}
+.top-selling  .top-selling-player {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 10px 10px;
+}
+.top-selling .top-selling-player .play{
+    width:22px;
+    height:22px;
+    fill:#AAAAAA;
+}
+.show{
+    text-align:center;
+    color:#999;
+    line-height:55px;
+}
+.show span{
+    font-size:14px;
+}
+.search{
+    margin-top:104px;
+}
+.search .search-btn{
+    padding:15px 10px;
+    border-bottom:1px solid #F0F1F2;
+}
+.search .search-box{
+    position:relative;
+    width:100%;
+    background: #EBECEC;
+    padding:0 30px;
+    border-radius:30px;
+}
+.search .search-box .icon-search{
+    position:absolute;
+    width:13px;
+    height:13px;
+    margin:0 8px;
+    left:0;
+    top:9px;
+}
+.search .search-box .search-input{
+    position: relative;
+    z-index:1;
+    width:100%;
+    height:30px;
+    line-height:18px;
+    font-size: 14px;
+    color:#333;
+    background: transparent;
+}
+.search .search-box .holder{
+    position:absolute;
+    top: 5px;
+    left:30px;
+    font-size:14px;
+    color:#C9C9C9;
+    z-index:0;
+}
+.search .search-box.active .holder{
+    display: none;
+}
+.search .search-box .search-close{
+    display: none;
+    position:absolute;
+    margin:0 8px;
+    right:0;
+    top:9px;
+    width:14px;
+    height:14px;
+    line-height:28px;
+}
+.search .search-box.active .search-close{
+    display: block;
+}
+#searchResult{
+    display: none;
+}
+#searchResult.active{
+    display: block;
+}
+#searchResult h3{
+    margin-left:10px;
+    padding-right:10px;
+    font-size:15px;
+    color:#50A7D7;
+    line-height:50px;
+    border-bottom:1px solid #F0F1F2;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+#searchResult li{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-align:center;
+        -ms-flex-align:center;
+            align-items:center;
+    height:45px;
+    padding-left:10px;
+}
+#searchResult li .icon-search{
+    width:15px;
+    height:15px;
+    fill:#D6D6D7;
+    margin-right:7px;
+}
+#searchResult li span{
+    display: block;
+    width:100%;
+    color:#333;
+    font-size:15px;
+    line-height:45px;
+    padding-right:10px;
+    border-bottom:1px solid #F0F1F2;
+}
+
+.search-hotlists{
+    padding:15px 10px;
+}
+.search-hotlists.active{
+    display:none;
+}
+.search-hotlists h3{
+    font-size:12px;
+    color:#666;
+}
+.search-hotlists .search-hot{
+    margin:10px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap:wrap;
+        flex-wrap:wrap;
+}
+.search-hotlists .search-hot li a{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align:center;
+        -ms-flex-align:center;
+            align-items:center;
+    height:32px;
+    margin-right:8px;
+    margin-bottom:8px;
+    padding:10px;
+    font-size:14px;
+    color:#333;
+    border-radius:32px;
+    border:1px solid #d3d4da;
+}
+.search-history{
+    display: none;
+}
+.search-history.active{
+    display:block;
+}
+.search-history li{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height:45px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+.search-history li .history-timeIcon{
+    margin:0 10px;
+    width:auto;
+    max-width: 17px;
+    height:15px;
+    display: block;
+}
+.search-history li .history-name{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width:100%;
+    line-height: 45px;
+    border-bottom:1px solid #F1F1F2;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+}
+.search-history li .history-name span{
+    overflow: hidden;
+    margin-right:10px;
+    text-overflow: ellipsis;
+}
+.search-history li .history-name .history-deleteIcon{
+    width:12px;
+    height:12px;
+    margin-right:18px;
+    margin-left:2px;
+    vertical-align: middle;
+}
+.search-songs a{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-left:9px;
+    padding:6px 0;
+    border-bottom:1px solid #F1F1F2;
+}
+.search-songs .search-songs-content p:first-child{
+    padding: 1px 0;
+    font-size: 17px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.search-songs .search-songs-content p small{
+    font-size: 17px;
+    color: #888;
+    margin-left: 4px;
+}
+.search-songs .search-songs-content p:nth-child(2){
+    padding: 1px 0;
+    font-size: 12px;
+    color: #888;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.search-songs  .search-songs-content p .icon-sq {
+    display: inline-block;
+    width: 12px;
+    height: 8px;
+    background: url(https://i.loli.net/2017/08/23/599d3e01cc534.png);
+    background-size: 166px 97px;
+    vertical-align: middle;
+}
+.search-songs .search-songs-player{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 10px 10px;
+}
+.search-songs .search-songs-player .icon-play {
+    width: 22px;
+    height: 22px;
+    fill: #AAA;
+}
+.noResult{
+    display: none;
+}
+.noResult.active{
+    display: block;
+}
+.noResult p{
+    text-align:center;
+    padding:20px 0;
+}
+.noResult p{
+    display: block;
+}
+
+/*# sourceMappingURL=index.css.map */
