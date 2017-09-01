@@ -17,7 +17,7 @@ query.find().then(function(results){
     for(var i=0;i<results.length;i++){
         let song = results[i].attributes;
         let li =`<li>
-                            <a href="/music/playlist.html?id=${results[i].id}">
+                            <a href="/playlist.html?id=${results[i].id}">
                                 <div class="songs-img">
                                     <img src="${song.url}" alt="">
                                     <span class="subscribe">
@@ -41,7 +41,7 @@ playlist.find().then(function(results){
         let songs = results[i].attributes;
         let songsId = results[i].id;
         let $li = `<div class="playlists-left">
-                            <a href="/music/songs.html?id=${songsId}">
+                            <a href="/songs.html?id=${songsId}">
                                 <div class="playlists-content">
                                     <p>${songs.name}<small>${songs.subtitle}</small></p>
                                     <p>
@@ -67,7 +67,7 @@ topsong.find().then(function(results){
         var number =((i+1)<10) ? ('0'+ (i+1)) : (i+1);
         let topsongs = results[i].attributes;
         let topsongsId = results[i].id;
-        let toplist =`<a href="/music/songs.html?id=${topsongsId}">
+        let toplist =`<a href="/songs.html?id=${topsongsId}">
                                 <div class="groups">${number}</div>
                                 <div class="top-selling-line">
                                     <div class="top-selling-content">
@@ -188,7 +188,7 @@ function show() {
         for(var i=0;i<results.length;i++){
             let searchSongs = results[i].attributes;
             let searchSongsId = results[i].id;
-            let songs= `<a href="/music/songs.html?id=${searchSongsId}">
+            let songs= `<a href="/songs.html?id=${searchSongsId}">
                             <div class="search-songs-content">
                                 <p>${searchSongs.name}<small>${searchSongs.subtitle}</small></p>
                                 <p>
