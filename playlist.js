@@ -91,6 +91,7 @@ query1.find().then(function(results){
         $songList.append(divSongList);
     }
     $songList.addClass('active');
+    $('.blank').addClass('active')
     $('.collecting').addClass('active')
 });
 var whether = true;

@@ -227,6 +227,10 @@ body{
     height:22px;
     fill:#AAAAAA;
 }
+.blank.active{
+    width:100%;
+    height:54px;
+}
 .collecting{
     display: none;
     position:fixed;
