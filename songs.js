@@ -69,6 +69,8 @@ function ininPlayer(url){
     });
     audio.onended =function(){
         $('.top-disc').removeClass('active');
+        $('.top-disc-turn').removeClass('active');
+        $('.top-wrap').addClass('active')
     };
     setInterval(function(){
         let seconds = audio.currentTime;
