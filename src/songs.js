@@ -52,9 +52,6 @@ function ininPlayer(url){
     var audio = document.createElement('audio');
     audio.src= url;
     document.body.appendChild(audio);
-    audio.play();
-    $('.top-disc-turn').addClass('active');
-    $('.top-disc').addClass('active');
     $('.icon-play').on('click',function(){
         audio.play();
         $('.top-disc').addClass('active');

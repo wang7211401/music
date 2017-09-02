@@ -1,0 +1,11 @@
+{
+    "rules":{
+	"camelcase": 1,
+	"comma-dangle": 2,
+	"quotes": 0
+	},
+    "env": {
+	"es6": true,
+	"jquery":true
+	}     
+}
