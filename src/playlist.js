@@ -51,11 +51,6 @@ query.get(id).then(function(results){
                                     </p>
                                     <div class="content-about">
                                         <p class="content-explanation content-third">
-                                            <span>简介：七夕快到了，单身狗我有话要说</span><br><br>
-                                            <span>一年到底有多少情人节？</span><br><br>
-                                            <span>过完2月14现在又七夕，有没有想过单身狗的感受</span><br><br>
-                                            <span>来人，把鹊桥给我烧了，秀恩爱的请好自为之</span><br><br>
-                                            <span>最后，点一首《祝天下所有的情侣都是失散多年的兄妹》送给你们</span><br>
                                         </p>
                                         <span class="content-down"></span>
                                         <span class="content-up"></span>
@@ -63,6 +58,12 @@ query.get(id).then(function(results){
                                 </div>
                             </div>`;
     $pageTop.append(divContainer);
+    var description = results.attributes.description;
+    var spanContent = description.split('\n');
+    for(var i=0;i<spanContent.length;i++){
+        var span = `<span>${spanContent[i]}</span><br><br>`;
+        $('.content-explanation').append(span)
+    }
 });
 var $songList =$('.songlist');
 var query1 = new AV.Query('Topsong');

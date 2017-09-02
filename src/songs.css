@@ -139,8 +139,8 @@ body{
     transform: rotate(-25deg);
 }
 .song-content{
-    padding:0 35px;
-    margin-top:25px;
+    padding:0 9.3vw;
+    margin-top:6.7vw;
     text-align: center;
     flex-grow: 1;
 }
