@@ -75,48 +75,44 @@ body{
     width:100%;
     height:100%;
 }
-.top-wrap .top-disc .top-disc-turn .disc-after{
-    display: block;
+.top-wrap .top-disc .top-disc-turn .top-disc-img{
     position:absolute;
     top:0;
     left:0;
     width:100%;
     height:100%;
+    border-radius:50%;
+    overflow: hidden;
+}
+.top-wrap .top-disc .top-disc-turn .top-disc-img .disc-after{
+    display: block;
+    width:100%;
+    height:100%;
+    border-radius:50%;
+}
+.top-wrap .top-disc .top-disc-turn.active .top-disc-img .disc-after{
     -webkit-animation: rotate 20s infinite linear;
             animation: rotate 20s infinite linear;
-    -webkit-animation-play-state: paused;
-            animation-play-state: paused;
-}
-.top-wrap .top-disc .top-disc-turn.active .disc-after{
-    -webkit-animation-play-state: running;
-            animation-play-state: running;
 }
 .top-wrap .top-disc .top-disc-turn .top-img{
     position:absolute;
-    top:50%;
-    left:50%;
+    top: calc(50% - 23.4375vw);
+    left: calc(50% - 23.4375vw);
     width:46.875vw;
     height:46.875vw;
     background: url(https://i.loli.net/2017/08/27/59a24b6066cd0.png);
     border-radius: 50%;
-    -webkit-transform: translate(-50%,-50%);
-            transform: translate(-50%,-50%);
     overflow: hidden;
 }
 .top-wrap .top-disc .top-disc-turn .top-img img{
-    position:absolute;
     display: block;
-    top:0;
-    left:0;
     width:100%;
-    -webkit-animation: rotate 20s infinite linear;
-            animation: rotate 20s infinite linear;
-    -webkit-animation-play-state:paused;
-            animation-play-state:paused;
+    height:100%;
+    border-radius:50%;
 }
 .top-wrap .top-disc .top-disc-turn.active .top-img img{
-    -webkit-animation-play-state: running;
-            animation-play-state: running;
+    -webkit-animation: rotate 20s infinite linear;
+            animation: rotate 20s infinite linear;
 }
 .top-wrap .top-disc .icon-play{
     display:block;
