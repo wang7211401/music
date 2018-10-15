@@ -72,7 +72,7 @@ query1.find().then(function(results){
         var pagesong = results[i].attributes;
         var songsId = results[i].id;
         let divSongList = `<div class="songlist-content">
-                                    <a href="/songs.html?id=${songsId}">
+                                    <a href="./songs.html?id=${songsId}">
                                         <div class="number">${i+1}</div>
                                         <div class="songlist-line">
                                             <div class="selling-content">
